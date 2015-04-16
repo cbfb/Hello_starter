@@ -1,0 +1,74 @@
+ //GLOBAL_$HTTPS_POST_FILES
+				  //DECLARING THE VALUES OF THE FORM
+				    $fname = $_POST['fname'];
+					$mname = $_POST['mname'];
+					$lname = $_POST['lname'];
+					
+					$user = $_POST['user'];
+					$pass = $_POST['pass'];
+					$rpass = $_POST['rpass'];
+					$email = $_POST['email'];
+					$sell = $_POST['sell'];
+					$ans = $_POST['ans'];
+					
+					                                  //DECLARE A VARIABLE FOR THE ERROR MESSAGE
+													  $message = "";
+													  
+													     //IF THE IS SUBMITTED BY CLICKING THE SUBMIT BUTTON
+														 if(isset($_POST['Submit']))
+														    {
+															   //NOW GET THE DATA FROM THE FORM AND VALIDATE IT
+															  
+														       if(trim($_POST['ans'])==""){
+															   	$message ="answer needed";
+																}else{
+																  $ans = trim($_POST['ans']);
+																  }
+															   if(trim($_POST['sell'])==""){
+															   	$message ="select a question";
+																}else{
+																  $sell = trim($_POST['sell']);
+																  }
+															   if(trim($_POST['email'])==""){
+															   	$message ="please enter your email";
+																}elseif(!preg_match("/^[A-Z0-9._%-]+@[A-Z0-9._%-]+\.[A-Z]{2,4}$/i", trim($_POST['email']))){
+							          $message="You Entered an invalid email Address";
+									  }else{
+										  $email = trim($_POST['email']);
+									  }
+															   if(trim($_POST['rpass'])==""){
+															   	$message ="please retype your password";
+																}else{
+																  $rpass = trim($_POST['rpass']);
+																  }
+															   if(trim($_POST['pass'])==""){
+															   	$message ="please enter password";
+																}else{
+																  $pass = trim($_POST['pass']);
+																  }
+															   if(trim($_POST['user'])==""){
+															   	$message ="please enter username";
+																}else{
+																  $user = trim($_POST['user']);
+																  }
+															   
+																if(trim($_POST['lname'])==""){
+															   	$message ="please enter your last name";
+																}else{
+																  $lname = trim($_POST['lname']);
+																  }
+																if(trim($_POST['mname'])==""){
+															   	$message ="please enter your middle name";
+																}else{
+																  $mname = trim($_POST['mname']);
+																  }
+																if(trim($_POST['fname'])==""){
+															   	$message ="please enter your firstname";
+																}else{
+																  $fname = trim($_POST['fname']);
+																  }
+																  //IF THERE IS MO ERROR OR IF ERROR DOES NOT EXIST AND IF VALIDATION IS SUCCESSFUL
+																  if(!$message){
+																                 header('location:login.php');
+																			   }
+															}
